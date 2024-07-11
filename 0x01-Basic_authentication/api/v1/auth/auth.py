@@ -5,7 +5,7 @@ from typing import List, TypeVar
 
 
 class Auth:
-    """ Auth class """
+    """ Class to manage the API authentication """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         return False
 
