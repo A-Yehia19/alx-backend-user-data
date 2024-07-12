@@ -14,7 +14,7 @@ def view_all_users() -> str:
 
     if user_email is None:
         return jsonify({"error": "email missing"}), 400
-    
+
     if user_password is None:
         return jsonify({"error": "password missing"}), 400
 
@@ -22,12 +22,12 @@ def view_all_users() -> str:
 
     if not user:
         return jsonify({"error": "no user found for this email"}), 404
-    
+
     user = user[0]
-    
+
     if not user.is_valid_password(user_password):
         return jsonify({"error": "wrong password"}), 401
-    
+
     from api.v1.app import auth
     session_id = auth.create_session(user.id)
     cookie_response = getenv('SESSION_NAME')
